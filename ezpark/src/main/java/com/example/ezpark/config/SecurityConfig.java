@@ -14,15 +14,22 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers(
-                "/resources/**");
+        return (web) -> web.ignoring().antMatchers("/h2/**");
     }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/main/**").hasAnyRole("USER");
+        http
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/h2/**").permitAll()
+                .and()
+                .csrf()
+                .ignoringAntMatchers("/h2/**").disable()
+                .httpBasic();
+        //http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
+        //http.authorizeRequests().antMatchers("/main/**").hasAnyRole("USER");
         //http.formLogin().loginPage("/login-page");
         //http.formLogin().loginProcessingUrl("/login-process");
         return http.build();

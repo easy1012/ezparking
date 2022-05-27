@@ -17,11 +17,11 @@
         </div>
     </nav>
 <h1 style="text-align: center; ">회원가입 페이지</h1>
-    <form style="text-align: center; ",action="">
+    <form style="text-align: center; ",action="./create" method="post">
         <p>
             <label for="first">ID:</label>
             <br>
-            <input type="text" name="ID" id="ID" required>
+            <input type="text" name="username" id="username" required>
             <br>
             <label for="first">Password:</label>
             <br>
@@ -29,24 +29,13 @@
 
         </p>
         <p>
-            <label for="first">name:</label>
-            <br>
-            <input type="text" name="name" id="name" required>
-            <br>
             <label for="email">Email:</label>
             <br>
             <input type="email" name="email" id="email" required>
         </p>
         <p>
-            Gender:
-            <input type="radio" name="gender" id="male" value="male" required>
-            <label for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female">
-            <label for="female">Female</label>
-        </p>
-        <p>
-            <label for="">Birthday:</label>
-            <input type="date" name="date" id="date" required>
+            <label for="">Age:</label>
+            <input type="text" name="age" id="age" required>
         </p>
 
             <input type="submit" name="submit" value="Submit">
